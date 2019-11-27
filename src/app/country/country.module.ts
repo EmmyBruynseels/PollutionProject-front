@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CountryComponent } from './country/country.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CountryComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule
+  ],
+  exports:[CountryComponent]
 })
 export class CountryModule { }

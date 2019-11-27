@@ -1,1 +1,16 @@
-<p>country works!</p>
+<table class="table table-borderless" *ngIf="countries.length>0">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Pollution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of countries">
+            <td>{{c.name}}</td>
+            <td>
+                <button type="button" class="btn btn-success btnCenter"(click)="btnPollution(c.continentId)">Pollution</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

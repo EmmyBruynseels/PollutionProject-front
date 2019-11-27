@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ContinentService } from '../continent.service';
+import { Continent } from '../models/continent.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-continent',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContinentComponent implements OnInit {
 
-  constructor() { }
+  continents:Continent[];
+
+  constructor(private continentService : ContinentService,private router:Router) { }
 
   ngOnInit() {
+    this.continents=[];
+    this.continentService.getAllContinents().subscribe(
+      (res:any)=>{
+        this.continents=res;
+      })
+  }
+
+  btnPollution(id:number){
+    this.continentService.getSelectedContinent.next(id);
+    this.router.navigate(["/continentPollution"]);
+  }
+
+  btnCountries(id:number){
+    console.log(id);
+    this.continentService.getSelectedContinent.next(id);
+    this.router.navigate(["/countries"]);
   }
 
 }

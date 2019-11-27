@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../models/country.model';
+import { CountryService } from '../country.service';
+import { Router } from '@angular/router';
+import { ContinentService } from 'src/app/continent/continent.service';
 
 @Component({
   selector: 'app-country',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryComponent implements OnInit {
 
-  constructor() { }
+  countries:Country[];
+
+  constructor(private countryService:CountryService,private continentService:ContinentService,private router:Router) { }
 
   ngOnInit() {
-  }
+    this.countries=[];
+    this.continentService.getSelectedContinent.subscribe(e=>{
+      console.log(e)
+      this.countryService.getCountriesByContinent(e).subscribe(e=>
+        this.countries=e)
+    }
+    )};
 
 }
