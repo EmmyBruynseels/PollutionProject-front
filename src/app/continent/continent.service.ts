@@ -18,4 +18,8 @@ export class ContinentService {
     return this.http.get<Continent[]>("http://localhost:8050/listings/continents/");
   }
 
+  getContinent(continentId: number):Observable<Continent>{
+    return this.http.get<Continent>("http://localhost:8050/listings/continentById/"+ continentId);
+  }
+
 }
