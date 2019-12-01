@@ -10,7 +10,7 @@
         <tr *ngFor="let c of countries">
             <td>{{c.name}}</td>
             <td>
-                <button type="button" class="btn btn-success btnCenter"(click)="btnPollution(c.continentId)">Pollution</button>
+                <button type="button" class="btn btn-success btnCenter"(click)="btnPollution(c.id)">Pollution</button>
             </td>
         </tr>
     </tbody>

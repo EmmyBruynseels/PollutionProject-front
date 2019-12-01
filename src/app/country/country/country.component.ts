@@ -19,6 +19,7 @@ export class CountryComponent implements OnInit {
 
   ngOnInit() {
     this.countries=[];
+    this.continent=new Continent(null,"",[]);
     this.continentService.getSelectedContinent.subscribe(e=>{
       console.log(e)
       this.continentService.getContinent(e).subscribe(result => {
@@ -28,5 +29,10 @@ export class CountryComponent implements OnInit {
         this.countries=e)
     })
   };
+
+  btnPollution(id:number){
+    this.countryService.getSelectedCountry.next(id);
+    this.router.navigate(["/countryPollution"]);
+  }
 
 }
