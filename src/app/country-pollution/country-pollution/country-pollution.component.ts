@@ -49,8 +49,10 @@ export class CountryPollutionComponent implements OnInit {
     this.countryPollution.year = this.editPollution.controls.year.value;
     this.countryPollution.pollution = this.editPollution.controls.pollution.value;
     console.log(this.countryPollution.year);
-    //save in service nog
-
+    //save in service
+    this.cPollutionService.updateCountryPollution(this.countryPollution).subscribe(result =>{
+      console.log("saved in microservice");
+    });
   }
 
 }

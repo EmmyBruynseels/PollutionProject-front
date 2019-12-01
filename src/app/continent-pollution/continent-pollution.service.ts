@@ -13,4 +13,8 @@ export class ContinentPollutionService {
   getContinentWithPollution(id:Number):Observable<ContinentPollution>{
     return this.http.get<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/"+id);
   }
+
+  updateContinentPollution(continentPollution: ContinentPollution){
+    return this.http.put<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/", continentPollution);
+  }
 }
