@@ -16,6 +16,6 @@ export class CountryService {
   constructor(private http:HttpClient) { }
 
   getCountriesByContinent(id:number):Observable<Country[]>{
-    return this.http.get<Country[]>("http://localhost:8050/listings/countryByContinent/"+id)
+    return this.http.get<Country[]>("http://localhost:8762/pollutionapi/listings/countryByContinent/"+id)
   }
 }

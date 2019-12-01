@@ -15,11 +15,11 @@ export class ContinentService {
   constructor(private http:HttpClient) { }
 
   getAllContinents():Observable<Continent[]>{
-    return this.http.get<Continent[]>("http://localhost:8050/listings/continents/");
+    return this.http.get<Continent[]>("http://localhost:8762/pollutionapi/listings/continents/");
   }
 
   getContinent(continentId: number):Observable<Continent>{
-    return this.http.get<Continent>("http://localhost:8050/listings/continentById/"+ continentId);
+    return this.http.get<Continent>("http://localhost:8762/pollutionapi/listings/continentById/"+ continentId);
   }
 
 }

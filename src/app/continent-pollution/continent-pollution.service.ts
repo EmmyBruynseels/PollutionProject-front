@@ -11,6 +11,6 @@ export class ContinentPollutionService {
   constructor(private http:HttpClient) { }
 
   getContinentWithPollution(id:Number):Observable<ContinentPollution>{
-    return this.http.get<ContinentPollution>("http://localhost:8050/listings/continentPollution/"+id);
+    return this.http.get<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/"+id);
   }
 }

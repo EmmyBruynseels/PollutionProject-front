@@ -12,6 +12,6 @@ export class CountryPollutionService {
    }
 
    getCountryWithPollution(id:number){
-      return this.http.get<Country>("http://localhost:8050/listings/countryPollution/"+id);
+      return this.http.get<Country>("http://localhost:8762/pollutionapi/listings/countryPollution/"+id);
   }
 }
