@@ -19,8 +19,10 @@ export class ContinentComponent implements OnInit {
     this.continentService.getAllContinents().subscribe(
       (res:any)=>{
         this.continents=res;
+        console.log(this.continents);
       })
   }
+  displayedColumns: string[] = ['Name', 'Pollution','Countries'];
 
   btnPollution(id:number){
     this.continentService.getSelectedContinent.next(id);

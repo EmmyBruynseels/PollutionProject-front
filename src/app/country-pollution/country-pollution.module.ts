@@ -4,6 +4,7 @@ import { CountryPollutionComponent } from './country-pollution/country-pollution
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatTableModule
   ],
   exports:[CountryPollutionComponent]
 })

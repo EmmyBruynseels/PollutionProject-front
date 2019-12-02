@@ -52,7 +52,8 @@ export class CountryComponent implements OnInit {
         this.countries=e)
     })
   };
-
+  displayedColumns: string[] = ['Name', 'CountryCode', 'Population', 'Area','popDensity','Pollution','Edit'];
+ 
   btnPollution(id:number){
     this.countryService.getSelectedCountry.next(id);
     this.router.navigate(["/countryPollution"]);

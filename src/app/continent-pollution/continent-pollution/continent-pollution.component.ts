@@ -38,7 +38,7 @@ export class ContinentPollutionComponent implements OnInit {
       });
     });
   };
-
+  displayedColumns: string[] = ['Year', 'Pollution','Edit'];
   btnEdit(pollution:ContinentPollution){
     this.continentPollution=pollution;
     this.editPollution.controls.pollution.setValue(this.continentPollution.pollution);

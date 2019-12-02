@@ -4,6 +4,7 @@ import { ContinentComponent } from './continent/continent.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [ContinentComponent],
@@ -14,6 +15,7 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule
   ],
   exports:[ContinentComponent]
 })

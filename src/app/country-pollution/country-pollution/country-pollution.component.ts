@@ -28,7 +28,7 @@ export class CountryPollutionComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private cPollutionService:CountryPollutionService,private countryService: CountryService,private router:Router) { 
   }
-
+  displayedColumns: string[] = ['Year', 'Pollution','Edit'];
   ngOnInit() {
     this.country= new Country(null,"",null,"",0,0,0,0,0,0,[]);
     this.countryService.getSelectedCountry.subscribe((res:any)=>{

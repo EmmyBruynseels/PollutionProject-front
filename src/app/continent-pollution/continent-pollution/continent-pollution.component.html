@@ -1,8 +1,8 @@
 <div *ngIf="continent.continentPollutions!=null" class="container">
     <h2>Pollution in {{ continent.name }}</h2>
-    <p>                        <button type="button" class="btn btn-success btnCenter"
+    <p>                        <button mat-raised-button color="primary" class="btnCenter"
       data-toggle="modal" data-target="#CreateContinentPollutionModal">Add pollution</button></p>
-    <table class="table table-borderless" *ngIf="continent.continentPollutions.length>0">
+    <!-- <table class="table table-borderless" *ngIf="continent.continentPollutions.length>0">
         <thead>
             <tr>
                 <th scope="col">Year</th>
@@ -20,6 +20,25 @@
                     </td>
             </tr>
         </tbody>
+    </table> -->
+    <table mat-table [dataSource]="continent.continentPollutions" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="Year">
+        <th mat-header-cell *matHeaderCellDef>Year</th>
+        <td mat-cell *matCellDef="let c"> {{c.year}} </td>
+      </ng-container>
+        <ng-container matColumnDef="Pollution">
+          <th mat-header-cell *matHeaderCellDef> Pollution </th>
+          <td mat-cell *matCellDef="let c">{{c.pollution}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Edit">
+          <th mat-header-cell *matHeaderCellDef> Edit </th>
+          <td mat-cell *matCellDef="let c"><button  mat-raised-button color="primary" class="btnCenter"
+            data-toggle="modal" data-target="#EditContinentPollutionModal" (click)="btnEdit(c)">Edit</button></td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
 

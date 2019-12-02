@@ -4,7 +4,7 @@ import { CountryComponent } from './country/country.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule
   ],
   exports:[CountryComponent]
 })

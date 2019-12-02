@@ -4,7 +4,7 @@ import { ContinentPollutionComponent } from './continent-pollution/continent-pol
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatTableModule
   ],
   exports:[ContinentPollutionComponent]
 })

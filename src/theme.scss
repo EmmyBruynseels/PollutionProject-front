@@ -1,0 +1,19 @@
+@import '~@angular/material/theming'; //imports we need to set our custom style
+
+@include mat-core(); //includes the common styles for Angular Material
+
+// $light-primary: mat-palette($mat-pink, A200);
+// $light-accent:  mat-palette($mat-purple, 300);
+// $light-theme:   mat-light-theme($light-primary, $light-accent);
+// body {
+//   @include angular-material-theme($light-theme);
+// }
+
+
+$dark-primary: mat-palette($mat-blue-grey, 500);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+
+// body {
+  @include angular-material-theme($dark-theme);
+// }

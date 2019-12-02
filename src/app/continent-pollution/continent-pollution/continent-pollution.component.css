@@ -1,11 +1,17 @@
-.width{
-    width: 30%;
-    margin-left: 35%;
-    margin-right: 35%;
+.width {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
-.btnCenter{
-    width: 50%;
+
+.btnCenter {
+  width: 50%;
 }
-.container{
-    margin-top:5%
+
+.container {
+  margin-top: 5%
+}
+
+table {
+  width: 100%;
 }
