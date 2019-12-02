@@ -21,16 +21,21 @@ export class CountryPollutionComponent implements OnInit {
     year:['']
   });
 
+  createPollution=this.fb.group({
+    pollution:[''],
+    year:['']
+  });
+
   constructor(private fb: FormBuilder,private cPollutionService:CountryPollutionService,private countryService: CountryService,private router:Router) { 
+  }
+
+  ngOnInit() {
+    this.country= new Country(null,"",null,"",0,0,0,0,0,0,[]);
     this.countryService.getSelectedCountry.subscribe((res:any)=>{
       this.cPollutionService.getCountryWithPollution(res).subscribe((res:any)=>{
         this.country=res;
       })
     })
-  }
-
-  ngOnInit() {
-    this.country= new Country(null,"",null,"",0,0,0,0,0,0,[]);
   }
 
   btnEdit(pollution:CountryPollution){
@@ -40,19 +45,28 @@ export class CountryPollutionComponent implements OnInit {
   }
 
   btnDelete(){
-    //delete in service
+    this.countryService.getSelectedCountry.next(this.country.id);
     this.cPollutionService.deleteCountryPollution(this.countryPollution.id).subscribe(result =>{
-      console.log("deleted in microservice");
+      this.ngOnInit();
     });
   }
 
   btnSave(){
     this.countryPollution.year = this.editPollution.controls.year.value;
     this.countryPollution.pollution = this.editPollution.controls.pollution.value;
-    console.log(this.countryPollution.year);
-    //save in service
-    this.cPollutionService.updateCountryPollution(this.countryPollution).subscribe(result =>{
-      console.log("saved in microservice");
+    this.cPollutionService.updateCountryPollution(this.countryPollution).subscribe();
+  }
+
+  
+  btnCreate(){
+    this.countryPollution = new CountryPollution(0,0,0,0);
+    this.countryPollution.year = this.createPollution.controls.year.value;
+    this.countryPollution.pollution = this.createPollution.controls.pollution.value;
+    this.countryPollution.countryID=this.country.id;
+
+    this.countryService.getSelectedCountry.next(this.country.id);
+    this.cPollutionService.addCountryPollution(this.countryPollution).subscribe((res:any)=>{
+      this.ngOnInit();
     });
   }
 

@@ -22,16 +22,21 @@ export class ContinentPollutionComponent implements OnInit {
     year:['']
   });
 
+  createPollution=this.fb.group({
+    pollution:[''],
+    year:['']
+  });
+
   constructor(private fb: FormBuilder,private cPollutionService:ContinentPollutionService, private continentService:ContinentService,private router:Router) { 
+  }
+
+  ngOnInit() {
+    this.continent = new Continent(null,"",[]);
     this.continentService.getSelectedContinent.subscribe((res:any)=>{
       this.cPollutionService.getContinentWithPollution(res).subscribe((res:any)=>{
         this.continent=res;
       });
     });
-  }
-
-  ngOnInit() {
-    this.continent = new Continent(null,"",[]);
   };
 
   btnEdit(pollution:ContinentPollution){
@@ -40,18 +45,29 @@ export class ContinentPollutionComponent implements OnInit {
     this.editPollution.controls.year.setValue(this.continentPollution.year);
   }
 
-  btnDelete(id:Number){
-
-    //stuur id naar service
-
+  btnDelete(){
+    this.continentService.getSelectedContinent.next(this.continent.continentId);
+    this.cPollutionService.deleteContinentPollution(this.continentPollution.id).subscribe((res:any)=>{
+      this.ngOnInit();
+    });
   }
 
   btnSave(){
     this.continentPollution.year = this.editPollution.controls.year.value;
     this.continentPollution.pollution = this.editPollution.controls.pollution.value;
-    console.log(this.continentPollution.year);
-    //save in service nog
+    this.cPollutionService.updateContinentPollution(this.continentPollution).subscribe();
+  }
 
+  btnCreate(){
+    this.continentPollution = new ContinentPollution(0,0,0,0);
+    this.continentPollution.year = this.createPollution.controls.year.value;
+    this.continentPollution.pollution = this.createPollution.controls.pollution.value;
+    this.continentPollution.continentID=this.continent.continentId;
+
+    this.continentService.getSelectedContinent.next(this.continent.continentId);
+    this.cPollutionService.addContinentPollution(this.continentPollution).subscribe((res:any)=>{
+      this.ngOnInit();
+    });
   }
 
 }

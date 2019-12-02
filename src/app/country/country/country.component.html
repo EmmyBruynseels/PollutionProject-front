@@ -1,17 +1,153 @@
+<div *ngIf="continent!=null" class="container">
 <h1>Countries in {{ continent.name }}</h1>
+<p><button type="button" class="btn btn-success btnCenter"
+    data-toggle="modal" data-target="#CreateCountryModal">Add country</button></p>
 <table class="table table-borderless" *ngIf="countries.length>0">
     <thead>
         <tr>
             <th scope="col">Name</th>
+            <th scope="col">Country Code</th>
+            <th scope="col">Population</th>
+            <th scope="col">Area</th>
+            <th scope="col">Population density</th>
             <th scope="col">Pollution</th>
+            <th scope="col">Edit</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let c of countries">
-            <td>{{c.name}}</td>
+            <th>{{c.name}}</th>
+            <td>{{c.countryCode}}</td>
+            <td>{{c.population}}</td>
+            <td>{{c.area}}</td>
+            <td>{{c.popDensity}}</td>
             <td>
                 <button type="button" class="btn btn-success btnCenter"(click)="btnPollution(c.id)">Pollution</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-success btnCenter"
+                data-toggle="modal" data-target="#EditCountryModal" (click)="btnEdit(c)">Edit</button>
             </td>
         </tr>
     </tbody>
 </table>
+</div>
+
+
+    <!-- EditModal -->
+    <div class="modal fade" id="EditCountryModal" tabindex="-1" role="dialog" aria-labelledby="EditCountryModal" aria-hidden="true"
+    *ngIf="country!=null">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="EditCountryModal">Edit {{country.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <form class="countryForm" [formGroup]="editCountry">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" type="text" formControlName="name" placeholder="Name" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <label for="countryCode">Country Code</label>
+                                    <input class="form-control" id="countryCode" type="text" formControlName="countryCode" placeholder="Country Code" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="population">Population</label>
+                                <input class="form-control" id="population" type="number" formControlName="population" placeholder="Population" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="populationDen">Population density</label>
+                            <input class="form-control" id="populationDen" type="number" formControlName="populationDen" placeholder="Population density" />
+                    </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="area">Area</label>
+                                <input class="form-control" id="area" type="number" formControlName="area" placeholder="Area" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <label for="industry">Industry</label>
+                                    <input class="form-control" id="industry" type="number" formControlName="industry" placeholder="Industry" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="agriculture">Agriculture</label>
+                                <input class="form-control" id="agriculture" type="number" formControlName="agriculture" placeholder="Agriculture" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="literacy">Literacy</label>
+                                <input class="form-control" id="literacy" type="number" formControlName="literacy" placeholder="Literacy" />
+                        </div>
+                        </div>
+                    </form>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="btnSave()">Save</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="btnDelete()">Delete</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+        <!-- CreateModal -->
+        <div class="modal fade" id="CreateCountryModal" tabindex="-1" role="dialog" aria-labelledby="CreateCountryModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="CreateCountryModal">Add country to {{continent.name}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form class="countryForm" [formGroup]="createCountry">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" type="text" formControlName="name" placeholder="Name" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <label for="countryCode">Country Code</label>
+                                    <input class="form-control" id="countryCode" type="text" formControlName="countryCode" placeholder="Country Code" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="population">Population</label>
+                                <input class="form-control" id="population" type="number" formControlName="population" placeholder="Population" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="populationDen">Population density</label>
+                            <input class="form-control" id="populationDen" type="number" formControlName="populationDen" placeholder="Population density" />
+                    </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="area">Area</label>
+                                <input class="form-control" id="area" type="number" formControlName="area" placeholder="Area" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <label for="industry">Industry</label>
+                                    <input class="form-control" id="industry" type="number" formControlName="industry" placeholder="Industry" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="agriculture">Agriculture</label>
+                                <input class="form-control" id="agriculture" type="number" formControlName="agriculture" placeholder="Agriculture" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="literacy">Literacy</label>
+                                <input class="form-control" id="literacy" type="number" formControlName="literacy" placeholder="Literacy" />
+                        </div>
+                        </div>
+                    </form>
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="btnCreate()">Create</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+            </div>

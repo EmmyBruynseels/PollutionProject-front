@@ -28,7 +28,6 @@ export class ContinentComponent implements OnInit {
   }
 
   btnCountries(id:number){
-    console.log(id);
     this.continentService.getSelectedContinent.next(id);
     this.router.navigate(["/countries"]);
   }
