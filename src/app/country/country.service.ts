@@ -22,4 +22,12 @@ export class CountryService {
   updateCountry(country: Country){
     return this.http.put<Country>("http://localhost:8762/pollutionapi/listings/country/", country);
   }
+
+  deleteCountry(countryId: number){
+    return this.http.delete<Country>("http://localhost:8762/pollutionapi/listings/country/" + countryId);
+  }
+
+  addCountry(country: Country){
+    return this.http.post<Country>("http://localhost:8762/pollutionapi/listings/country/", country);
+  }
 }

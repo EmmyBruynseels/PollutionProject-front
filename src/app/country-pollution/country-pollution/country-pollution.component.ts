@@ -39,10 +39,11 @@ export class CountryPollutionComponent implements OnInit {
     this.editPollution.controls.year.setValue(this.countryPollution.year);
   }
 
-  btnDelete(id:Number){
-
-    //stuur id naar service
-
+  btnDelete(){
+    //delete in service
+    this.cPollutionService.deleteCountryPollution(this.countryPollution.id).subscribe(result =>{
+      console.log("deleted in microservice");
+    });
   }
 
   btnSave(){

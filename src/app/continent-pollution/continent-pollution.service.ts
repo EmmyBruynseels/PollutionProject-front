@@ -17,4 +17,12 @@ export class ContinentPollutionService {
   updateContinentPollution(continentPollution: ContinentPollution){
     return this.http.put<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/", continentPollution);
   }
+
+  deleteContinentPollution(continentPollutionId: number){
+    return this.http.delete<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/" + continentPollutionId);
+  }
+
+  addContinentPollution(continentPollution: ContinentPollution){
+    return this.http.post<ContinentPollution>("http://localhost:8762/pollutionapi/listings/continentPollution/", continentPollution);
+  }
 }

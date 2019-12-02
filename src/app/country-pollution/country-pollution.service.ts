@@ -18,4 +18,12 @@ export class CountryPollutionService {
   updateCountryPollution(countryPollution: CountryPollution){
     return this.http.put<CountryPollution>("http://localhost:8762/pollutionapi/listings/countryPollution/", countryPollution);
   }
+
+  deleteCountryPollution(countryPollutionId: number){
+    return this.http.delete<CountryPollution>("http://localhost:8762/pollutionapi/listings/countryPollution/" + countryPollutionId);
+  }
+
+  addCountryPollution(countryPollution: CountryPollution){
+    return this.http.post<CountryPollution>("http://localhost:8762/pollutionapi/listings/countryPollution/", countryPollution);
+  }
 }
