@@ -1,26 +1,6 @@
 <h1>WorldPollution</h1>
 <div class="container">
 <h2>All continents</h2>
-<!-- <table class="table table-borderless" *ngIf="continents.length>0">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Pollution</th>
-            <th scope="col">Countries</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let c of continents">
-            <td>{{c.name}}</td>
-            <td>
-                <button mat-raised-button color="primary" class="btnCenter"(click)="btnPollution(c.continentId)">Pollution</button>
-            </td>
-            <td>
-                <button mat-raised-button color="primary" class="btnCenter"(click)="btnCountries(c.continentId)">Countries</button>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
 <table mat-table [dataSource]="continents" class="mat-elevation-z8" *ngIf="continents.length>0">
   
     <ng-container matColumnDef="Name">

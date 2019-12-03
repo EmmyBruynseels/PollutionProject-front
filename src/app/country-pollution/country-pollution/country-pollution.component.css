@@ -10,3 +10,6 @@
     margin-top:5%
 }
 table {width: 100%;}
+mat-form-field {
+    margin: 10px;
+}

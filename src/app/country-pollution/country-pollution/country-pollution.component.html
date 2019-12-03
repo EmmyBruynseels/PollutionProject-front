@@ -2,25 +2,6 @@
         <h2>Pollution in {{ country.name }}</h2>
         <p>                        <button class="btnCenter" mat-raised-button color="primary"
           data-toggle="modal" data-target="#CreateCountryPollutionModal">Add pollution</button></p>
-        <!-- <table class="table table-borderless" *ngIf="country.countryPollutions.length>0">
-            <thead>
-                <tr>
-                    <th scope="col">Year</th>
-                    <th scope="col">Pollution Amount</th>
-                    <th scope="col">Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let c of country.countryPollutions">
-                    <td>{{c.year}}</td>
-                    <td>{{c.pollution}}</td>
-                    <td>
-                        <button type="button" class="btn btn-success btnCenter"
-                        data-toggle="modal" data-target="#EditModal" (click)="btnEdit(c)">Edit</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
         <table mat-table [dataSource]="country.countryPollutions" class="mat-elevation-z8">
   
           <ng-container matColumnDef="Year">
@@ -46,7 +27,7 @@
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModal" aria-hidden="true"
 *ngIf="countryPollution!=null">
 <div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
+  <div class="modal-content bg-dark text-white">
     <div class="modal-header">
       <h5 class="modal-title" id="EditModal">Edit pollution</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -54,23 +35,19 @@
       </button>
     </div>
     <div class="modal-body">
-            <form class="pollutionForm" [formGroup]="editPollution">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="name">Pollution</label>
-                            <input class="form-control" id="name" type="number" formControlName="pollution" placeholder="pollution" />
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="year">Year</label>
-                                <input class="form-control" id="year" type="number" formControlName="year" placeholder="year" />
-                        </div>
-                    </div>
-                </form>
-      <button type="button" class="btn btn-success" data-dismiss="modal" (click)="btnSave()">Save</button>
-      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="btnDelete()">Delete</button>
+        <form [formGroup]="editPollution">
+            <mat-form-field>
+              <input matInput placeholder="Pollution" type="number" formControlName="pollution" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Year" type="number" formControlName="year" required>
+            </mat-form-field>
+          </form>
+      <button mat-raised-button color="primary" data-dismiss="modal" (click)="btnSave()">Save</button>
+      <button mat-raised-button color="primary" data-dismiss="modal" (click)="btnDelete()">Delete</button>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      <button mat-raised-button color="primary"data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>
@@ -79,7 +56,7 @@
 <!-- CreateModal -->
 <div class="modal fade" id="CreateCountryPollutionModal" tabindex="-1" role="dialog" aria-labelledby="CreateCountryPollutionModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content bg-dark text-white">
       <div class="modal-header">
         <h5 class="modal-title" id="CreateCountryPollutionModal">Add pollution to {{country.name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -87,22 +64,18 @@
         </button>
       </div>
       <div class="modal-body">
-              <form class="pollutionForm" [formGroup]="createPollution">
-                      <div class="form-row">
-                          <div class="form-group col-md-6">
-                              <label for="name">Pollution</label>
-                              <input class="form-control" id="name" type="number" formControlName="pollution" placeholder="pollution" />
-                          </div>
-                          <div class="form-group col-md-6">
-                                  <label for="year">Year</label>
-                                  <input class="form-control" id="year" type="number" formControlName="year" placeholder="year" />
-                          </div>
-                      </div>
-                  </form>
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="btnCreate()">Create</button>
+          <form [formGroup]="createPollution">
+              <mat-form-field>
+                <input matInput placeholder="Pollution" type="number" formControlName="pollution" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Year" type="number" formControlName="year" required>
+              </mat-form-field>
+            </form>
+        <button mat-raised-button color="primary" data-dismiss="modal" (click)="btnCreate()">Create</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button mat-raised-button color="primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

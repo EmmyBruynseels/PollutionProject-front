@@ -11,7 +11,7 @@
 
 
 $dark-primary: mat-palette($mat-blue-grey, 500);
-$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-accent: mat-palette($mat-amber, A200);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
 
 // body {
